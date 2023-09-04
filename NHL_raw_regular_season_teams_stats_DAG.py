@@ -23,10 +23,10 @@ dag = DAG(
     tags=['Sport', 'NHL']
 )
 
+
 def taska_kolbaska_executable(**op_kwargs):
     from NHL_raw_regular_season_teams_stats_executable import NHL_raw_regular_season_teams_stats_func
     return NHL_raw_regular_season_teams_stats_func(op_kwargs['pg_conn_info'])
-
 
 taska_kolbaska = PythonOperator(
     task_id='taska_kolbaska',
@@ -34,5 +34,6 @@ taska_kolbaska = PythonOperator(
     python_callable=taska_kolbaska_executable,
     op_kwargs={'pg_conn_info': "{{ macros.connections.get_conn('pg_connection') }}"}, # подразумевается наличие макроса, идущего через Basehook к словарю подключений
 )
+
 
 taska_kolbaska

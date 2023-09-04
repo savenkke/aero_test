@@ -109,4 +109,3 @@ def NHL_raw_regular_season_teams_stats_func(pg_conn_info)
 			""", data_for_insert_mogrified)
 	
 	return
-	
